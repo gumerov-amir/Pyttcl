@@ -162,7 +162,7 @@ class MessageDialog(wx.Frame):
         if self.type == 'C':
             del self.Pyttcl.MessageData['W']['C'][self.arg.nChannelID]
         elif self.type == 'U':
-            if type(self.arg) == TeamTalk5.TextMessage:
+            if type(self.arg) == TextMessage:
                 del self.Pyttcl.MessageData['W']['U'][self.arg.nFromUserID]
             else:
                 del self.Pyttcl.MessageData['W']['U'][self.arg.nUserID]
