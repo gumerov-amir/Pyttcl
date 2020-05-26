@@ -1,0 +1,171 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR ORGANIZATION
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-04-11 16:52+0300\n"
+"PO-Revision-Date: 2020-04-11 16:55+0300\n"
+"Last-Translator: GAE <ar8200@bk.ru>\n"
+"Language-Team: \n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: pygettext.py 1.5\n"
+"X-Generator: Poedit 2.3\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../pyttcl/pyttcl.py:65
+#, python-brace-format
+msgid "Connect\t{hotkey}"
+msgstr ""
+
+#: ../pyttcl/pyttcl.py:73
+#, python-brace-format
+msgid "Disconnect\t{hotkey}"
+msgstr ""
+
+#: ../pyttcl/pyttcl.py:79
+msgid "Client"
+msgstr ""
+
+#: ../pyttcl/pyttcl.py:82
+#, python-brace-format
+msgid "Get channel info\t{hotkey}"
+msgstr ""
+
+#: ../pyttcl/pyttcl.py:90
+msgid "Channel"
+msgstr ""
+
+#: ../pyttcl/pyttcl.py:93
+#, python-brace-format
+msgid "Get user info\t{hotkey}"
+msgstr ""
+
+#: ../pyttcl/pyttcl.py:101
+msgid "User"
+msgstr ""
+
+#: ../pyttcl/pyttcl.py:104
+#, python-brace-format
+msgid "Get help\t{hotkey}"
+msgstr ""
+
+#: ../pyttcl/pyttcl.py:113
+msgid "Help"
+msgstr ""
+
+#: ../pyttcl/pyttcl.py:136
+msgid "Connecting"
+msgstr ""
+
+#: ../pyttcl/pyttcl.py:144
+msgid "Connect"
+msgstr ""
+
+#: ../pyttcl/pyttcl.py:175 ../pyttcl/pyttcl.py:336
+msgid "Not connected"
+msgstr ""
+
+#: ../pyttcl/pyttcl.py:175
+msgid "Error"
+msgstr ""
+
+#: ../pyttcl/pyttcl.py:196
+msgid "Information"
+msgstr ""
+
+#: ../pyttcl/pyttcl.py:203
+#, python-brace-format
+msgid ""
+"Name:\n"
+"    \"{name}\"\n"
+"\n"
+"Topic:\n"
+"    \"{topic}\"\n"
+"\n"
+"Password:\n"
+"    \"{password}\"\n"
+"\n"
+"Operator password:\n"
+"    \"{opPassword}\"\n"
+"\n"
+"Maximum users:\n"
+"    \"{maxUsers}\"\n"
+"\n"
+"Disk quota:\n"
+"    \"{diskQuota}\"\n"
+"\n"
+"Permanent channel (stored on server):\n"
+"    \"{v1}\"\n"
+"\n"
+"Allow only one user to transmit (no duplex):\n"
+"    \"{v2}\"\n"
+"\n"
+"Classroom (operator controls transmissions):\n"
+"    \"{v3}\"\n"
+"\n"
+"Operator receive only (only operators see and hear):\n"
+"    \"{v4}\"\n"
+"\n"
+"No voice activation (only Push-to-Talk allowed):\n"
+"    \"{v5}\"\n"
+"\n"
+"No audio recording allowed (save to disk not allowed):\n"
+"    \"{v6}\"\n"
+msgstr ""
+
+#: ../pyttcl/pyttcl.py:258
+#, python-brace-format
+msgid ""
+"Nickname:\n"
+"    \"{nickname}\"\n"
+"\n"
+"User name:\n"
+"    \"{userName}\"\n"
+"\n"
+"IP address:\n"
+"    \"{ipAddress}\"\n"
+"\n"
+"Client name:\n"
+"    \"{clientName}\"\n"
+"\n"
+"Type:\n"
+"    \"{userType}\"\n"
+msgstr ""
+
+#: ../pyttcl/pyttcl.py:277
+msgid "Default"
+msgstr ""
+
+#: ../pyttcl/pyttcl.py:277
+msgid "Admin"
+msgstr ""
+
+#: ../pyttcl/pyttcl.py:284
+msgid "Ok"
+msgstr ""
+
+#: ../pyttcl/pyttcl.py:296 ../pyttcl/pyttcl.py:307
+msgid "Yes"
+msgstr ""
+
+#: ../pyttcl/pyttcl.py:298 ../pyttcl/pyttcl.py:309
+msgid "No"
+msgstr ""
+
+#: ../pyttcl/pyttcl.py:315
+msgid "Message"
+msgstr ""
+
+#: ../pyttcl/pyttcl.py:333
+msgid "Connected"
+msgstr ""
+
+#: ../pyttcl/pyttcl.py:339
+msgid "loggedin"
+msgstr ""

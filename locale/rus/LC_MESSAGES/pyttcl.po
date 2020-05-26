@@ -1,0 +1,244 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR ORGANIZATION
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-04-11 16:52+0300\n"
+"PO-Revision-Date: 2020-04-11 16:55+0300\n"
+"Last-Translator: GAE <ar8200@bk.ru>\n"
+"Language-Team: \n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: pygettext.py 1.5\n"
+"X-Generator: Poedit 2.3\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+
+#: ../pyttcl/pyttcl.py:65
+#, python-brace-format
+msgid "Connect\t{hotkey}"
+msgstr "Подключиться\t{hotkey}"
+
+#: ../pyttcl/pyttcl.py:73
+#, python-brace-format
+msgid "Disconnect\t{hotkey}"
+msgstr "Отключиться\t{hotkey}"
+
+#: ../pyttcl/pyttcl.py:79
+msgid "Client"
+msgstr "Клиент"
+
+#: ../pyttcl/pyttcl.py:82
+#, python-brace-format
+msgid "Get channel info\t{hotkey}"
+msgstr "Получить информацию о канале\t{hotkey}"
+
+#: ../pyttcl/pyttcl.py:90
+msgid "Channel"
+msgstr "Канал"
+
+#: ../pyttcl/pyttcl.py:93
+#, python-brace-format
+msgid "Get user info\t{hotkey}"
+msgstr "Получить информацию о пользователе\t{hotkey}"
+
+#: ../pyttcl/pyttcl.py:101
+msgid "User"
+msgstr "Пользователь"
+
+#: ../pyttcl/pyttcl.py:104
+#, python-brace-format
+msgid "Get help\t{hotkey}"
+msgstr "Помощь\t{hotkey}"
+
+#: ../pyttcl/pyttcl.py:113
+msgid "Help"
+msgstr "Помощь"
+
+#: ../pyttcl/pyttcl.py:136
+msgid "Connecting"
+msgstr "Подключение"
+
+#: ../pyttcl/pyttcl.py:144
+msgid "Connect"
+msgstr "Подключиться"
+
+#: ../pyttcl/pyttcl.py:175 ../pyttcl/pyttcl.py:336
+msgid "Not connected"
+msgstr "Не подключено"
+
+#: ../pyttcl/pyttcl.py:175
+msgid "Error"
+msgstr "Ошибка"
+
+#: ../pyttcl/pyttcl.py:196
+msgid "Information"
+msgstr "Информация"
+
+#: ../pyttcl/pyttcl.py:203
+#, python-brace-format
+msgid ""
+"Name:\n"
+"    \"{name}\"\n"
+"\n"
+"Topic:\n"
+"    \"{topic}\"\n"
+"\n"
+"Password:\n"
+"    \"{password}\"\n"
+"\n"
+"Operator password:\n"
+"    \"{opPassword}\"\n"
+"\n"
+"Maximum users:\n"
+"    \"{maxUsers}\"\n"
+"\n"
+"Disk quota:\n"
+"    \"{diskQuota}\"\n"
+"\n"
+"Permanent channel (stored on server):\n"
+"    \"{v1}\"\n"
+"\n"
+"Allow only one user to transmit (no duplex):\n"
+"    \"{v2}\"\n"
+"\n"
+"Classroom (operator controls transmissions):\n"
+"    \"{v3}\"\n"
+"\n"
+"Operator receive only (only operators see and hear):\n"
+"    \"{v4}\"\n"
+"\n"
+"No voice activation (only Push-to-Talk allowed):\n"
+"    \"{v5}\"\n"
+"\n"
+"No audio recording allowed (save to disk not allowed):\n"
+"    \"{v6}\"\n"
+msgstr ""
+"Имя:\n"
+"    \"{name}\"\n"
+"\n"
+"Тема:\n"
+"    \"{topic}\"\n"
+"\n"
+"Пароль:\n"
+"    \"{password}\"\n"
+"\n"
+"Пароль оператора:\n"
+"    \"{opPassword}\"\n"
+"\n"
+"Максимальное количество пользователей:\n"
+"    \"{maxUsers}\"\n"
+"\n"
+"Дисковая квота:\n"
+"    \"{diskQuota}\"\n"
+"\n"
+"Постоянный канал:\n"
+"    \"{v1}\"\n"
+"\n"
+"Запретить перебивать говорящего:\n"
+"    \"{v2}\"\n"
+"\n"
+"Учебный класс (оператор управляет передачеми\n"
+"    \"{v3}\"\n"
+"\n"
+"Только операторы видят и слышат:\n"
+"    \"{v4}\"\n"
+"\n"
+"Запрещена голосовая активация:\n"
+"    \"{v5}\"\n"
+"\n"
+"Запись на диск запрещена:\n"
+"    \"{v6}\"\n"
+
+#: ../pyttcl/pyttcl.py:258
+#, python-brace-format
+msgid ""
+"Nickname:\n"
+"    \"{nickname}\"\n"
+"\n"
+"User name:\n"
+"    \"{userName}\"\n"
+"\n"
+"IP address:\n"
+"    \"{ipAddress}\"\n"
+"\n"
+"Client name:\n"
+"    \"{clientName}\"\n"
+"\n"
+"Type:\n"
+"    \"{userType}\"\n"
+msgstr ""
+"Ник:\n"
+"    \"{nickname}\"\n"
+"\n"
+"Имя пользователя:\n"
+"    \"{userName}\"\n"
+"\n"
+"IP адрес:\n"
+"    \"{ipAddress}\"\n"
+"\n"
+"Имя клиента:\n"
+"    \"{clientName}\"\n"
+"\n"
+"Тип:\n"
+"    \"{userType}\"\n"
+
+#: ../pyttcl/pyttcl.py:277
+msgid "Default"
+msgstr "Обычный"
+
+#: ../pyttcl/pyttcl.py:277
+msgid "Admin"
+msgstr "Администратор"
+
+#: ../pyttcl/pyttcl.py:284
+msgid "Ok"
+msgstr "Ок"
+
+#: ../pyttcl/pyttcl.py:296 ../pyttcl/pyttcl.py:307
+msgid "Yes"
+msgstr "Да"
+
+#: ../pyttcl/pyttcl.py:298 ../pyttcl/pyttcl.py:309
+msgid "No"
+msgstr "Нет"
+
+#: ../pyttcl/pyttcl.py:315
+msgid "Message"
+msgstr "Сообщение"
+
+#: ../pyttcl/pyttcl.py:333
+msgid "Connected"
+msgstr "Подключено"
+
+#: ../pyttcl/pyttcl.py:339
+msgid "loggedin"
+msgstr "Авторизовано"
+
+#~ msgid "user"
+#~ msgstr "Пользователь"
+
+#~ msgid "Permanent channel (stored on server)"
+#~ msgstr "Постоянный канал   (храниться на сервере)"
+
+#~ msgid "Allow only one user to transmit (no duplex)"
+#~ msgstr "Запретить перебивать говорящего"
+
+#~ msgid "Classroom (operator controls transmissions)"
+#~ msgstr "Учебный класс (оператор управляет передачами)"
+
+#~ msgid "Operator receive only (only operators see and hear)"
+#~ msgstr "Только операторы видят и слышат"
+
+#~ msgid "No voice activation (only Push-to-Talk allowed)"
+#~ msgstr ""
+#~ "Не разрешена голосовая активация (допустима только клавиша для передачи "
+#~ "речи)"
+
+#~ msgid "No audio recording allowed (save to disk not allowed)"
+#~ msgstr "Не разрешена запись на диск"
