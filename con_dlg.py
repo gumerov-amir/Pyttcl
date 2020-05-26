@@ -33,14 +33,18 @@ class ConnectingDialog(wx.Dialog):
         self.Show()
 
     def connect(self, evt=None):
-        self.Destroy()
+        if self.hostnameCtrl.GetValue() != '' and (self.tcpportCtrl.GetValue().isdigit() and int(self.tcpportCtrl.GetValue()) > 0 and int(self.tcpportCtrl.GetValue()) < 65536) and (self.udpportCtrl.GetValue().isdigit()   and int(self.udpportCtrl.GetValue()) > 0 and int(self.udpportCtrl.GetValue()) < 65536):
+            self.Destroy()
+        else:
+            wx.MessageBox(_('Please fill in the following required fields:\nhost\ntcp port (integer in the range from 1 to 6535)\nudp port (integer in the range from 1 to 65535)'), _('Error'))
+            return
         self.Pyttcl.EventThread = EventThread(self.Pyttcl)
-        self.Pyttcl.EventThread.setDaemon(True)
+        self    .Pyttcl.EventThread.setDaemon(True)
         self.Pyttcl.EventThread.start()
         self.Pyttcl.TeamTalk.connect(
             self.hostnameCtrl.GetValue(),
-            self.tcpportCtrl.GetValue(),
-            self.udpportCtrl.GetValue()
+            int(self.tcpportCtrl.GetValue()),
+            int(self.udpportCtrl.GetValue())
         )
         while self.Pyttcl.is_connected is not True:
             if self.Pyttcl.is_connected is False:
@@ -56,7 +60,7 @@ class ConnectingDialog(wx.Dialog):
         while self.Pyttcl.is_loggedin is None:
             pass
         #self.Pyttcl.TeamTalk.doJoinChannelByID(
-         #   int(server_data['channel_id']), server_data['channel_password']
+        #   int(server_data['channel_id']), server_data['channel_password']
         #)
         self.Pyttcl.GUI.Frame.GetMenuBar().GetMenu(0).GetMenuItems()[0].Enable(False)
         self.Pyttcl.GUI.Frame.GetMenuBar().GetMenu(0).GetMenuItems()[1].Enable(True)
@@ -70,8 +74,8 @@ class ConnectingDialog(wx.Dialog):
             ]
         )
         self.hostnameCtrl.SetValue(server_data['host'])
-        self.tcpportCtrl.SetValue(int(server_data['tcpport']))
-        self.udpportCtrl.SetValue(int(server_data['udpport']))
+        self.tcpportCtrl.SetValue(server_data['tcpport'])
+        self.udpportCtrl.SetValue(server_data['udpport'])
         self.UsernameCtrl.SetValue(server_data['username'])
         self.PasswordCtrl.SetValue(server_data['password'])
         self.ChannelCtrl.SetValue(server_data['channel'])
