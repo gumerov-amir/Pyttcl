@@ -16,20 +16,21 @@ class MessageDialog(wx.Frame):
                     self.type = 'U'
                     self.Pyttcl.MessageData['W']['U'][arg.nFromUserID] = self
                     self.Pyttcl.MessageData['U'][self.arg.nFromUserID][time.localtime()] = self.arg
+                    self.panel = wx.Panel(self, -1)
                     self.MessageHistoryCtrl = wx.TextCtrl(
-                        self, -1,
+                        self.panel, -1,
                         '\n'.join(
-                            f'({t.tm_hour} {t.tm_min}) {self.Pyttcl.TeamTalk.getUser(m.nFromUserID).szNickname}:\n{m.szMessage}'
+                            f' {self.Pyttcl.TeamTalk.getUser(m.nFromUserID).szNickname} ({t.tm_hour} {t.tm_min}):\n{m.szMessage}'
                             for t,m in zip(
                                 self.Pyttcl.MessageData['U'][self.arg.nFromUserID].keys(), self.Pyttcl.MessageData['U'][self.arg.nFromUserID].values()
                             )
                         ), size=(1000, 500),
                         style=wx.TE_MULTILINE | wx.TE_READONLY
                     )
-                    self.NewMessageCtrl = wx.TextCtrl(self, -1, '', style=wx.TE_MULTILINE)
-                    sendButton = wx.Button(self, -1, _('wx.Button')) 
+                    self.NewMessageCtrl = wx.TextCtrl(self.panel, -1, '', style=wx.TE_MULTILINE)
+                    sendButton = wx.Button(self.panel, -1, _('Send')) 
                     sendButton.Bind(wx.EVT_BUTTON, lambda evt: self.SendMessage())
-                    closeButton = wx.Button(self, -1, _('Close'))
+                    closeButton = wx.Button(self.panel, -1, _('Close'))
                     closeButton.Bind(wx.EVT_BUTTON, self.Destroy)
                     self.Show()
                 else:
@@ -39,7 +40,7 @@ class MessageDialog(wx.Frame):
                     self.Pyttcl.MessageData['U'][self.arg.nFromUserID][time.localtime()] = self.arg
                     self.MessageHistoryCtrl.SetValue(
                         '\n'.join(
-                            f'({t.tm_hour} {t.tm_min}) {self.Pyttcl.TeamTalk.getUser(m.nFromUserID).szNickname}:\n{m.szMessage}'
+                            f'{self.Pyttcl.TeamTalk.getUser(m.nFromUserID).szNickname} ({t.tm_hour} {t.tm_min}):\n{m.szMessage}'
                             for t,m in zip(
                                 self.Pyttcl.MessageData['U'][self.arg.nFromUserID].keys(), self.Pyttcl.MessageData['U'][self.arg.nFromUserID].values()
                             )
@@ -53,20 +54,21 @@ class MessageDialog(wx.Frame):
                     self.type = 'C'
                     self.Pyttcl.MessageData['W']['C'][arg.nChannelID] = self
                     self.Pyttcl.MessageData['C'][self.arg.nChannelID][time.localtime()] = self.arg
+                    self.panel = wx.Panel(self, -1)
                     self.MessageHistoryCtrl = wx.TextCtrl(
-                        self, -1,
+                        self.panel, -1,
                         '\n'.join(
-                            f'({t.tm_hour} {t.tm_min}) {self.Pyttcl.TeamTalk.getUser(m.nFromUserID).szNickname}:\n{m.szMessage}'
+                            f'{self.Pyttcl.TeamTalk.getUser(m.nFromUserID).szNickname} ({t.tm_hour} {t.tm_min}):\n{m.szMessage}'
                             for t,m in zip(
                                 self.Pyttcl.MessageData['C'][self.arg.nChannelID].keys(), self.Pyttcl.MessageData['C'][self.arg.nChannelID].values()
                             )
                         ), size=(1000, 500),
                         style=wx.TE_MULTILINE | wx.TE_READONLY
                     )
-                    self.NewMessageCtrl = wx.TextCtrl(self, -1, '', style=wx.TE_MULTILINE)
-                    sendButton = wx.Button(self, -1, _('wx.Button')) 
+                    self.NewMessageCtrl = wx.TextCtrl(self.panel, -1, '', style=wx.TE_MULTILINE)
+                    sendButton = wx.Button(self.panel, -1, _('Send')) 
                     sendButton.Bind(wx.EVT_BUTTON, lambda evt: self.SendMessage())
-                    closeButton = wx.Button(self, -1, _('Close'))
+                    closeButton = wx.Button(self.panel, -1, _('Close'))
                     closeButton.Bind(wx.EVT_BUTTON, self.Destroy)
                     self.Show()
                 else:
@@ -76,7 +78,7 @@ class MessageDialog(wx.Frame):
                     self.Pyttcl.MessageData['C'][self.arg.nChannelID][time.localtime()] = self.arg
                     self.MessageHistoryCtrl.SetValue(
                         '\n'.join(
-                            f'({t.tm_hour} {t.tm_min}) {self.Pyttcl.TeamTalk.getUser(m.nFromUserID).szNickname}:\n{m.szMessage}'
+                            f'{self.Pyttcl.TeamTalk.getUser(m.nFromUserID).szNickname} ({t.tm_hour} {t.tm_min}):\n{m.szMessage}'
                             for t,m in zip(
                                 self.Pyttcl.MessageData['C'][self.arg.nChannelID].keys(), self.Pyttcl.MessageData['C'][self.arg.nChannelID].values()
                             )
@@ -90,20 +92,21 @@ class MessageDialog(wx.Frame):
                     self.arg = arg
                     self.type = 'U'
                     self.Pyttcl.MessageData['W']['U'][arg.nUserID] = self
+                    self.panel = wx.Panel(self, -1)
                     self.MessageHistoryCtrl = wx.TextCtrl(
-                        self, -1,
+                        self.panel, -1,
                         '\n'.join(
-                            f'({t.tm_hour} {t.tm_min}) {self.Pyttcl.TeamTalk.getUser(m.nFromUserID).szNickname}:\n{m.szMessage}'
+                            f'{self.Pyttcl.TeamTalk.getUser(m.nFromUserID).szNickname} ({t.tm_hour} {t.tm_min}):\n{m.szMessage}'
                             for t,m in zip(
                                 self.Pyttcl.MessageData['U'][self.arg.nUserID].keys(), self.Pyttcl.MessageData['U'][self.arg.nUserID].values()
                             )
                         ), size=(1000, 500),
                         style=wx.TE_MULTILINE | wx.TE_READONLY
                     )
-                    self.NewMessageCtrl = wx.TextCtrl(self, -1, '', style=wx.TE_MULTILINE)
-                    sendButton = wx.Button(self, -1, _('wx.Button')) 
+                    self.NewMessageCtrl = wx.TextCtrl(self.panel, -1, '', style=wx.TE_MULTILINE)
+                    sendButton = wx.Button(self.panel, -1, _('Send')) 
                     sendButton.Bind(wx.EVT_BUTTON, lambda evt: self.SendMessage())
-                    closeButton = wx.Button(self, -1, _('Close'))
+                    closeButton = wx.Button(self.panel, -1, _('Close'))
                     closeButton.Bind(wx.EVT_BUTTON, self.Destroy)
                     self.Show()
                 else:
@@ -112,7 +115,7 @@ class MessageDialog(wx.Frame):
                     self.arg = arg
                     self.MessageHistoryCtrl.SetValue(
                         '\n'.join(
-                            f'({t.tm_hour} {t.tm_min}) {self.Pyttcl.TeamTalk.getUser(m.nFromUserID).szNickname}:\n{m.szMessage}'
+                            f'{self.Pyttcl.TeamTalk.getUser(m.nFromUserID).szNickname} ({t.tm_hour} {t.tm_min}):\n{m.szMessage}'
                             for t,m in zip(
                                 self.Pyttcl.MessageData['U'][self.arg.nUserID].keys(), self.Pyttcl.MessageData['U'][self.arg.nUserID].values()
                             )
@@ -125,20 +128,21 @@ class MessageDialog(wx.Frame):
                     self.arg = arg
                     self.type = 'C'
                     self.Pyttcl.MessageData['W']['C'][arg.nChannelID] = self
+                    self.panel = wx.Panel(self, -1)
                     self.MessageHistoryCtrl = wx.TextCtrl(
-                        self, -1,
+                        self.panel, -1,
                         '\n'.join(
-                            f'({t.tm_hour} {t.tm_min}) {self.Pyttcl.TeamTalk.getUser(m.nFromUserID).szNickname}:\n{m.szMessage}'
+                            f'{self.Pyttcl.TeamTalk.getUser(m.nFromUserID).szNickname} ({t.tm_hour} {t.tm_min}):\n{m.szMessage}'
                             for t,m in zip(
                                 self.Pyttcl.MessageData['C'][self.arg.nChannelID].keys(), self.Pyttcl.MessageData['C'][self.arg.nChannelID].values()
                             )
                         ), size=(1000, 500),
                         style=wx.TE_MULTILINE | wx.TE_READONLY
                     )
-                    self.NewMessageCtrl = wx.TextCtrl(self, -1, '', style=wx.TE_MULTILINE)
-                    sendButton = wx.Button(self, -1, _('wx.Button')) 
+                    self.NewMessageCtrl = wx.TextCtrl(self.panel, -1, '', style=wx.TE_MULTILINE)
+                    sendButton = wx.Button(self.panel, -1, _('Send')) 
                     sendButton.Bind(wx.EVT_BUTTON, lambda evt: self.SendMessage())
-                    closeButton = wx.Button(self, -1, _('Close'))
+                    closeButton = wx.Button(self.panel, -1, _('Close'))
                     closeButton.Bind(wx.EVT_BUTTON, self.Destroy)
                     self.Show()
                 else:
@@ -147,7 +151,7 @@ class MessageDialog(wx.Frame):
                     self.arg = arg
                     self.MessageHistoryCtrl.SetValue(
                         '\n'.join(
-                            f'({t.tm_hour} {t.tm_min}) {self.Pyttcl.TeamTalk.getUser(m.nFromUserID).szNickname}:\n{m.szMessage}'
+                            f'{self.Pyttcl.TeamTalk.getUser(m.nFromUserID).szNickname} ({t.tm_hour} {t.tm_min}):\n{m.szMessage}'
                             for t,m in zip(
                                 self.Pyttcl.MessageData['C'][self.arg.nChannelID].keys(), self.Pyttcl.MessageData['C'][self.arg.nChannelID].values()
                             )
@@ -155,11 +159,14 @@ class MessageDialog(wx.Frame):
                     )
 
     def Destroy(self, evt=None):
-        super().Destroy()
         if self.type == 'C':
             del self.Pyttcl.MessageData['W']['C'][self.arg.nChannelID]
         elif self.type == 'U':
-            del self.Pyttcl.MessageData['W']['U'][self.arg.nFromUserID]
+            if type(self.arg) == TeamTalk5.TextMessage:
+                del self.Pyttcl.MessageData['W']['U'][self.arg.nFromUserID]
+            else:
+                del self.Pyttcl.MessageData['W']['U'][self.arg.nUserID]
+        return super().Destroy()
 
     def SendMessage(self):
         msg = TextMessage()
@@ -173,7 +180,7 @@ class MessageDialog(wx.Frame):
             if type(self.arg) == User:
                 msg.nToUserID = self.arg.nUserID
             else:
-                msg.nToUserID = self.nFromUserID
+                msg.nToUserID = self.arg.nFromUserID
         msg.nFromUserID = self.Pyttcl.TeamTalk.getMyUserID()
         msg.szFromUsername = ''
         msg.szMessage = self.NewMessageCtrl.GetValue()
@@ -191,7 +198,7 @@ class MessageDialog(wx.Frame):
         if self.type == 'C':
             self.MessageHistoryCtrl.SetValue(
                 '\n'.join(
-                    f'({t.tm_hour} {t.tm_min}) {self.Pyttcl.TeamTalk.getUser(m.nFromUserID).szNickname}:\n{m.szMessage}'
+                    f'{self.Pyttcl.TeamTalk.getUser(m.nFromUserID).szNickname} ({t.tm_hour} {t.tm_min}):\n{m.szMessage}'
                     for t,m in zip(
                         self.Pyttcl.MessageData['C'][self.arg.nChannelID].keys(), self.Pyttcl.MessageData['C'][self.arg.nChannelID].values()
                     )
@@ -201,18 +208,18 @@ class MessageDialog(wx.Frame):
             if type(self.arg) == TextMessage:
                 self.MessageHistoryCtrl.SetValue(
                     '\n'.join(
-                        f'({t.tm_hour} {t.tm_min}) {self.Pyttcl.TeamTalk.getUser(m.nFromUserID).szNickname}:\n{m.szMessage}'
+                        f'{self.Pyttcl.TeamTalk.getUser(m.nFromUserID).szNickname} ({t.tm_hour} {t.tm_min}):\n{m.szMessage}'
                     for     t,m in zip(
-                        self    .Pyttcl.MessageData['C'][self.arg.nChannelID].keys(), self.Pyttcl.MessageData['C'][self.arg.nChannelID].values()
+                        self    .Pyttcl.MessageData['U'][self.arg.nFromUserID].keys(), self.Pyttcl.MessageData['U'][self.arg.nFromUserID].values()
                     )   
                 )   
             )   
             else    :
                 self    .MessageHistoryCtrl.SetValue(
                     '\n'    .join(
-                        f'({    t.tm_hour} {t.tm_min}) {self.Pyttcl.TeamTalk.getUser(m.nFromUserID).szNickname}:\n{m.szMessage}'
+                        f'{self.Pyttcl.TeamTalk.getUser(m.nFromUserID).szNickname} ({    t.tm_hour} {t.tm_min}):\n{m.szMessage}'
                         for t,m     in zip(
-                            self.Pyttcl.MessageData['C'][self.arg.nChannelID].keys(), self.Pyttcl.MessageData['C'][self.arg.nChannelID].values()
+                            self.Pyttcl.MessageData['U'][self.arg.nUserID].keys(), self.Pyttcl.MessageData['U'][self.arg.nUserID].values()
                     )   
                 )   
             )
