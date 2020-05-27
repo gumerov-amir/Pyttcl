@@ -24,7 +24,7 @@ class pyttcl:
         self.Config = configparser.ConfigParser()
         self.Config.read(config_file, encoding='UTF-8')
         self.Translation = gettext.translation(
-            'pyttcl', 'locale', languages=[self.Config.get(
+            'pyttcl', os.path.join(os.getcwd(), 'locale'), languages=[self.Config.get(
                 'settings', 'language'
             )]
         )

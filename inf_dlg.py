@@ -1,9 +1,17 @@
-import wx
+# -* coding: "UTF-8" -*-
+
+"""Module containes class that defines information dialog."""
 
 from TeamTalk5 import Channel, User
 
+import wx
+
+
 class InfoDialog(wx.Dialog):
+    """Class defines information dialog."""
+
     def __init__(self, pyttcl):
+        """Show information about selected item in tree."""
         wx.Dialog.__init__(self, pyttcl.GUI.Frame, -1, _('Information'))
         self.Pyttcl = pyttcl
         TeamTalkItem = self.Pyttcl.MainTreeviewData[
@@ -102,6 +110,7 @@ Type:
         self.Show()
 
     def getChannelTypeValue(self, nType, nPos):
+        """Return Yes if the nPos with nType is True or no."""
         numbers_list = [1, 2, 4, 8, 16, 32]
         if nType in numbers_list:
             if numbers_list[nPos] == nType:

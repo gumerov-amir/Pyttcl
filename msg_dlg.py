@@ -1,16 +1,23 @@
-import time
+# -*- coding: "UTF-8" -*-
 
-import wx
+"""Module with class that defines Message Dialog."""
+
+import time
 
 from TeamTalk5 import Channel, TextMessage, User
 
+import wx
+
 
 class MessageDialog(wx.Frame):
+    """Class defines message dialog."""
+
     def __init__(self, pyttcl, arg):
+        """Create or get controling of message dialog."""
         if type(arg) == TextMessage:
             if arg.nMsgType == 1:
                 if arg.nFromUserID not in pyttcl.MessageData['W']['U']:
-                    wx.Frame.__init__(self, None, -1, _('Message from {user}'.format(user=pyttcl.TeamTalk.getUser(arg.nFromUserID).szNickname)))
+                    wx.Frame.__init__(self, None, -1, _('Message {user}'.format(user=pyttcl.TeamTalk.getUser(arg.nFromUserID).szNickname)))
                     self.Pyttcl = pyttcl
                     self.arg = arg
                     self.type = 'U'
@@ -19,16 +26,12 @@ class MessageDialog(wx.Frame):
                     self.panel = wx.Panel(self, -1)
                     self.MessageHistoryCtrl = wx.TextCtrl(
                         self.panel, -1,
-                        '\n'.join(
-                            f' {self.Pyttcl.TeamTalk.getUser(m.nFromUserID).szNickname} ({t.tm_hour} {t.tm_min}):\n{m.szMessage}'
-                            for t,m in zip(
-                                self.Pyttcl.MessageData['U'][self.arg.nFromUserID].keys(), self.Pyttcl.MessageData['U'][self.arg.nFromUserID].values()
-                            )
-                        ), size=(1000, 500),
+                        '\n'.join(f' {self.Pyttcl.TeamTalk.getUser(m.nFromUserID).szNickname} ({t.tm_hour} {t.tm_min}):\n{m.szMessage}' for t, m in zip(self.Pyttcl.MessageData['U'][self.arg.nFromUserID].keys(), self.Pyttcl.MessageData['U'][self.arg.nFromUserID].values())),
+                        size=(1000, 500),
                         style=wx.TE_MULTILINE | wx.TE_READONLY
                     )
                     self.NewMessageCtrl = wx.TextCtrl(self.panel, -1, '', style=wx.TE_MULTILINE)
-                    sendButton = wx.Button(self.panel, -1, _('Send')) 
+                    sendButton = wx.Button(self.panel, -1, _('Send'))
                     sendButton.Bind(wx.EVT_BUTTON, lambda evt: self.SendMessage())
                     closeButton = wx.Button(self.panel, -1, _('Close'))
                     closeButton.Bind(wx.EVT_BUTTON, self.Destroy)
@@ -38,17 +41,10 @@ class MessageDialog(wx.Frame):
                     self.Pyttcl = pyttcl
                     self.arg = arg
                     self.Pyttcl.MessageData['U'][self.arg.nFromUserID][time.localtime()] = self.arg
-                    self.MessageHistoryCtrl.SetValue(
-                        '\n'.join(
-                            f'{self.Pyttcl.TeamTalk.getUser(m.nFromUserID).szNickname} ({t.tm_hour} {t.tm_min}):\n{m.szMessage}'
-                            for t,m in zip(
-                                self.Pyttcl.MessageData['U'][self.arg.nFromUserID].keys(), self.Pyttcl.MessageData['U'][self.arg.nFromUserID].values()
-                            )
-                        )
-                    )
+                    self.UpdateFields()
             if arg.nMsgType == 2:
                 if arg.nChannelID not in pyttcl.MessageData['W']['C']:
-                    wx.Frame.__init__(self, None, -1, _('Message from {channel}'.format(channel=pyttcl.TeamTalk.getChannel(arg.nChannelID).szName)))
+                    wx.Frame.__init__(self, None, -1, _('Message {channel}'.format(channel=pyttcl.TeamTalk.getChannel(arg.nChannelID).szName)))
                     self.Pyttcl = pyttcl
                     self.arg = arg
                     self.type = 'C'
@@ -57,16 +53,12 @@ class MessageDialog(wx.Frame):
                     self.panel = wx.Panel(self, -1)
                     self.MessageHistoryCtrl = wx.TextCtrl(
                         self.panel, -1,
-                        '\n'.join(
-                            f'{self.Pyttcl.TeamTalk.getUser(m.nFromUserID).szNickname} ({t.tm_hour} {t.tm_min}):\n{m.szMessage}'
-                            for t,m in zip(
-                                self.Pyttcl.MessageData['C'][self.arg.nChannelID].keys(), self.Pyttcl.MessageData['C'][self.arg.nChannelID].values()
-                            )
-                        ), size=(1000, 500),
+                        '\n'.join(f'{self.Pyttcl.TeamTalk.getUser(m.nFromUserID).szNickname} ({t.tm_hour} {t.tm_min}):\n{m.szMessage}' for t, m in zip(self.Pyttcl.MessageData['C'][self.arg.nChannelID].keys(), self.Pyttcl.MessageData['C'][self.arg.nChannelID].values())),
+                        size=(1000, 500),
                         style=wx.TE_MULTILINE | wx.TE_READONLY
                     )
                     self.NewMessageCtrl = wx.TextCtrl(self.panel, -1, '', style=wx.TE_MULTILINE)
-                    sendButton = wx.Button(self.panel, -1, _('Send')) 
+                    sendButton = wx.Button(self.panel, -1, _('Send'))
                     sendButton.Bind(wx.EVT_BUTTON, lambda evt: self.SendMessage())
                     closeButton = wx.Button(self.panel, -1, _('Close'))
                     closeButton.Bind(wx.EVT_BUTTON, self.Destroy)
@@ -76,18 +68,11 @@ class MessageDialog(wx.Frame):
                     self.Pyttcl = pyttcl
                     self.arg = arg
                     self.Pyttcl.MessageData['C'][self.arg.nChannelID][time.localtime()] = self.arg
-                    self.MessageHistoryCtrl.SetValue(
-                        '\n'.join(
-                            f'{self.Pyttcl.TeamTalk.getUser(m.nFromUserID).szNickname} ({t.tm_hour} {t.tm_min}):\n{m.szMessage}'
-                            for t,m in zip(
-                                self.Pyttcl.MessageData['C'][self.arg.nChannelID].keys(), self.Pyttcl.MessageData['C'][self.arg.nChannelID].values()
-                            )
-                        )
-                    )
+                    self.UpdateFields()
         else:
             if type(arg) == User:
                 if arg.nUserID not in pyttcl.MessageData['W']['U']:
-                    wx.Frame.__init__(self, None, -1, _('Message from {user}'.format(user=arg.szNickname)))
+                    wx.Frame.__init__(self, None, -1, _('Message {user}'.format(user=arg.szNickname)))
                     self.Pyttcl = pyttcl
                     self.arg = arg
                     self.type = 'U'
@@ -95,16 +80,12 @@ class MessageDialog(wx.Frame):
                     self.panel = wx.Panel(self, -1)
                     self.MessageHistoryCtrl = wx.TextCtrl(
                         self.panel, -1,
-                        '\n'.join(
-                            f'{self.Pyttcl.TeamTalk.getUser(m.nFromUserID).szNickname} ({t.tm_hour} {t.tm_min}):\n{m.szMessage}'
-                            for t,m in zip(
-                                self.Pyttcl.MessageData['U'][self.arg.nUserID].keys(), self.Pyttcl.MessageData['U'][self.arg.nUserID].values()
-                            )
-                        ), size=(1000, 500),
+                        '\n'.join(f'{self.Pyttcl.TeamTalk.getUser(m.nFromUserID).szNickname} ({t.tm_hour} {t.tm_min}):\n{m.szMessage}' for t, m in zip(self.Pyttcl.MessageData['U'][self.arg.nUserID].keys(), self.Pyttcl.MessageData['U'][self.arg.nUserID].values())),
+                        size=(1000, 500),
                         style=wx.TE_MULTILINE | wx.TE_READONLY
                     )
                     self.NewMessageCtrl = wx.TextCtrl(self.panel, -1, '', style=wx.TE_MULTILINE)
-                    sendButton = wx.Button(self.panel, -1, _('Send')) 
+                    sendButton = wx.Button(self.panel, -1, _('Send'))
                     sendButton.Bind(wx.EVT_BUTTON, lambda evt: self.SendMessage())
                     closeButton = wx.Button(self.panel, -1, _('Close'))
                     closeButton.Bind(wx.EVT_BUTTON, self.Destroy)
@@ -113,17 +94,10 @@ class MessageDialog(wx.Frame):
                     self = pyttcl.MessageData['W']['U'][arg.nUserID]
                     self.Pyttcl = pyttcl
                     self.arg = arg
-                    self.MessageHistoryCtrl.SetValue(
-                        '\n'.join(
-                            f'{self.Pyttcl.TeamTalk.getUser(m.nFromUserID).szNickname} ({t.tm_hour} {t.tm_min}):\n{m.szMessage}'
-                            for t,m in zip(
-                                self.Pyttcl.MessageData['U'][self.arg.nUserID].keys(), self.Pyttcl.MessageData['U'][self.arg.nUserID].values()
-                            )
-                        )
-                    )
+                    self.UpdateFields()
             if type(arg) == Channel:
                 if arg.nChannelID not in pyttcl.MessageData['W']['C']:
-                    wx.Frame.__init__(self, None, -1, _('Message from {channel}'.format(channel=arg.szName)))
+                    wx.Frame.__init__(self, None, -1, _('Message {channel}'.format(channel=arg.szName)))
                     self.Pyttcl = pyttcl
                     self.arg = arg
                     self.type = 'C'
@@ -131,16 +105,12 @@ class MessageDialog(wx.Frame):
                     self.panel = wx.Panel(self, -1)
                     self.MessageHistoryCtrl = wx.TextCtrl(
                         self.panel, -1,
-                        '\n'.join(
-                            f'{self.Pyttcl.TeamTalk.getUser(m.nFromUserID).szNickname} ({t.tm_hour} {t.tm_min}):\n{m.szMessage}'
-                            for t,m in zip(
-                                self.Pyttcl.MessageData['C'][self.arg.nChannelID].keys(), self.Pyttcl.MessageData['C'][self.arg.nChannelID].values()
-                            )
-                        ), size=(1000, 500),
+                        '\n'.join(f'{self.Pyttcl.TeamTalk.getUser(m.nFromUserID).szNickname} ({t.tm_hour} {t.tm_min}):\n{m.szMessage}' for t, m in zip(self.Pyttcl.MessageData['C'][self.arg.nChannelID].keys(), self.Pyttcl.MessageData['C'][self.arg.nChannelID].values())),
+                        size=(1000, 500),
                         style=wx.TE_MULTILINE | wx.TE_READONLY
                     )
                     self.NewMessageCtrl = wx.TextCtrl(self.panel, -1, '', style=wx.TE_MULTILINE)
-                    sendButton = wx.Button(self.panel, -1, _('Send')) 
+                    sendButton = wx.Button(self.panel, -1, _('Send'))
                     sendButton.Bind(wx.EVT_BUTTON, lambda evt: self.SendMessage())
                     closeButton = wx.Button(self.panel, -1, _('Close'))
                     closeButton.Bind(wx.EVT_BUTTON, self.Destroy)
@@ -148,17 +118,12 @@ class MessageDialog(wx.Frame):
                 else:
                     self = pyttcl.MessageData['W']['C'][arg.nChannelID]
                     self.Pyttcl = pyttcl
+
                     self.arg = arg
-                    self.MessageHistoryCtrl.SetValue(
-                        '\n'.join(
-                            f'{self.Pyttcl.TeamTalk.getUser(m.nFromUserID).szNickname} ({t.tm_hour} {t.tm_min}):\n{m.szMessage}'
-                            for t,m in zip(
-                                self.Pyttcl.MessageData['C'][self.arg.nChannelID].keys(), self.Pyttcl.MessageData['C'][self.arg.nChannelID].values()
-                            )
-                        )
-                    )
+                    self.UpdateFields()
 
     def Destroy(self, evt=None):
+        """Destroy MessageDialog."""
         if self.type == 'C':
             del self.Pyttcl.MessageData['W']['C'][self.arg.nChannelID]
         elif self.type == 'U':
@@ -169,10 +134,11 @@ class MessageDialog(wx.Frame):
         return super().Destroy()
 
     def SendMessage(self):
+        """Send message."""
         msg = TextMessage()
         if self.type == 'C':
             msg.nMsgType = 2
-            msg.nChannelID = self.arg.nChannelID
+            msg.nChannelID = self.arg.nChannelID  # здесь возможна ошибка
             msg.nToUserID = 0
         elif self.type == 'U':
             msg.nMsgType = 1
@@ -192,14 +158,16 @@ class MessageDialog(wx.Frame):
                 self.Pyttcl.MessageData['U'][self.arg.nFromUserID][time.localtime()] = msg
             else:
                 self.Pyttcl.MessageData['U'][self.arg.nUserID][time.localtime()] = msg
-        self.Update()
+        self.UpdateFields()
+        self.NewMessageCtrl.Clear()
 
-    def Update(self):
+    def UpdateFields(self):
+        """Update MessageHistoryCtrl."""
         if self.type == 'C':
             self.MessageHistoryCtrl.SetValue(
                 '\n'.join(
                     f'{self.Pyttcl.TeamTalk.getUser(m.nFromUserID).szNickname} ({t.tm_hour} {t.tm_min}):\n{m.szMessage}'
-                    for t,m in zip(
+                    for t, m in zip(
                         self.Pyttcl.MessageData['C'][self.arg.nChannelID].keys(), self.Pyttcl.MessageData['C'][self.arg.nChannelID].values()
                     )
                 )
@@ -209,18 +177,17 @@ class MessageDialog(wx.Frame):
                 self.MessageHistoryCtrl.SetValue(
                     '\n'.join(
                         f'{self.Pyttcl.TeamTalk.getUser(m.nFromUserID).szNickname} ({t.tm_hour} {t.tm_min}):\n{m.szMessage}'
-                    for     t,m in zip(
-                        self    .Pyttcl.MessageData['U'][self.arg.nFromUserID].keys(), self.Pyttcl.MessageData['U'][self.arg.nFromUserID].values()
-                    )   
-                )   
-            )   
-            else    :
+                        for t, m in zip(
+                            self    .Pyttcl.MessageData['U'][self.arg.nFromUserID].keys(), self.Pyttcl.MessageData['U'][self.arg.nFromUserID].values()
+                        )
+                    )
+                )
+            else:
                 self    .MessageHistoryCtrl.SetValue(
                     '\n'    .join(
                         f'{self.Pyttcl.TeamTalk.getUser(m.nFromUserID).szNickname} ({    t.tm_hour} {t.tm_min}):\n{m.szMessage}'
-                        for t,m     in zip(
+                        for t, m in zip(
                             self.Pyttcl.MessageData['U'][self.arg.nUserID].keys(), self.Pyttcl.MessageData['U'][self.arg.nUserID].values()
-                    )   
-                )   
-            )
-        self.NewMessageCtrl.Clear()
+                        )
+                    )
+                )
