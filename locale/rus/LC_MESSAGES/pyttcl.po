@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-11 16:52+0300\n"
-"PO-Revision-Date: 2020-04-11 16:55+0300\n"
+"POT-Creation-Date: 2020-06-08 16:11+0300\n"
+"PO-Revision-Date: 2020-06-08 16:14+0300\n"
 "Last-Translator: GAE <ar8200@bk.ru>\n"
 "Language-Team: \n"
 "Language: ru\n"
@@ -19,69 +19,95 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
 
-#: ../pyttcl/pyttcl.py:65
-#, python-brace-format
+#: pyttcl\GUI.py:35
 msgid "Connect\t{hotkey}"
 msgstr "Подключиться\t{hotkey}"
 
-#: ../pyttcl/pyttcl.py:73
-#, python-brace-format
+#: pyttcl\GUI.py:43
 msgid "Disconnect\t{hotkey}"
 msgstr "Отключиться\t{hotkey}"
 
-#: ../pyttcl/pyttcl.py:79
+#: pyttcl\GUI.py:49
 msgid "Client"
 msgstr "Клиент"
 
-#: ../pyttcl/pyttcl.py:82
-#, python-brace-format
+#: pyttcl\GUI.py:52
 msgid "Get channel info\t{hotkey}"
 msgstr "Получить информацию о канале\t{hotkey}"
 
-#: ../pyttcl/pyttcl.py:90
+#: pyttcl\GUI.py:61
+msgid "Channel Message\t{hotkey}"
+msgstr "Сообщение канала\t{hotkey}"
+
+#: pyttcl\GUI.py:68
 msgid "Channel"
 msgstr "Канал"
 
-#: ../pyttcl/pyttcl.py:93
-#, python-brace-format
+#: pyttcl\GUI.py:71
 msgid "Get user info\t{hotkey}"
 msgstr "Получить информацию о пользователе\t{hotkey}"
 
-#: ../pyttcl/pyttcl.py:101
+#: pyttcl\GUI.py:80
+msgid "User Message\t{hotkey}"
+msgstr "Сообщение пользователя\t{hotkey}"
+
+#: pyttcl\GUI.py:87
 msgid "User"
 msgstr "Пользователь"
 
-#: ../pyttcl/pyttcl.py:104
-#, python-brace-format
+#: pyttcl\GUI.py:90
 msgid "Get help\t{hotkey}"
 msgstr "Помощь\t{hotkey}"
 
-#: ../pyttcl/pyttcl.py:113
+#: pyttcl\GUI.py:99
 msgid "Help"
 msgstr "Помощь"
 
-#: ../pyttcl/pyttcl.py:136
+#: pyttcl\con_dlg.py:10
 msgid "Connecting"
 msgstr "Подключение"
 
-#: ../pyttcl/pyttcl.py:144
+#: pyttcl\con_dlg.py:26
+msgid "Remove"
+msgstr "Удалить"
+
+#: pyttcl\con_dlg.py:28
+msgid "Save"
+msgstr "Сохранить"
+
+#: pyttcl\con_dlg.py:30
 msgid "Connect"
 msgstr "Подключиться"
 
-#: ../pyttcl/pyttcl.py:175 ../pyttcl/pyttcl.py:336
-msgid "Not connected"
-msgstr "Не подключено"
+#: pyttcl\con_dlg.py:42
+msgid ""
+"Please fill in the following required fields:\n"
+"host\n"
+"tcp port (integer in the range from 1 to 6535)\n"
+"udp port (integer in the range from 1 to 65535)"
+msgstr "пожалуйста т.д."
 
-#: ../pyttcl/pyttcl.py:175
+#: pyttcl\con_dlg.py:42 pyttcl\con_dlg.py:54
 msgid "Error"
 msgstr "Ошибка"
 
-#: ../pyttcl/pyttcl.py:196
+#: pyttcl\con_dlg.py:54 pyttcl\evt_hndler.py:29
+msgid "Not connected"
+msgstr "Не подключено"
+
+#: pyttcl\evt_hndler.py:26
+msgid "Connected"
+msgstr "Подключено"
+
+#: pyttcl\evt_hndler.py:36
+msgid "loggedin"
+msgstr "Авторизовано"
+
+#: pyttcl\inf_dlg.py:15
 msgid "Information"
 msgstr "Информация"
 
-#: ../pyttcl/pyttcl.py:203
-#, python-brace-format
+#: pyttcl\inf_dlg.py:23
 msgid ""
 "Name:\n"
 "    \"{name}\"\n"
@@ -155,8 +181,7 @@ msgstr ""
 "Запись на диск запрещена:\n"
 "    \"{v6}\"\n"
 
-#: ../pyttcl/pyttcl.py:258
-#, python-brace-format
+#: pyttcl\inf_dlg.py:78
 msgid ""
 "Nickname:\n"
 "    \"{nickname}\"\n"
@@ -188,37 +213,38 @@ msgstr ""
 "Тип:\n"
 "    \"{userType}\"\n"
 
-#: ../pyttcl/pyttcl.py:277
-msgid "Default"
-msgstr "Обычный"
-
-#: ../pyttcl/pyttcl.py:277
+#: pyttcl\inf_dlg.py:97
 msgid "Admin"
 msgstr "Администратор"
 
-#: ../pyttcl/pyttcl.py:284
+#: pyttcl\inf_dlg.py:97
+msgid "Default"
+msgstr "Обычный"
+
+#: pyttcl\inf_dlg.py:104
 msgid "Ok"
 msgstr "Ок"
 
-#: ../pyttcl/pyttcl.py:296 ../pyttcl/pyttcl.py:307
+#: pyttcl\inf_dlg.py:117 pyttcl\inf_dlg.py:128
 msgid "Yes"
 msgstr "Да"
 
-#: ../pyttcl/pyttcl.py:298 ../pyttcl/pyttcl.py:309
+#: pyttcl\inf_dlg.py:119 pyttcl\inf_dlg.py:130
 msgid "No"
 msgstr "Нет"
 
-#: ../pyttcl/pyttcl.py:315
-msgid "Message"
-msgstr "Сообщение"
+#: pyttcl\msg_dlg.py:34 pyttcl\msg_dlg.py:61 pyttcl\msg_dlg.py:88
+#: pyttcl\msg_dlg.py:113
+msgid "Send"
+msgstr "Отправить"
 
-#: ../pyttcl/pyttcl.py:333
-msgid "Connected"
-msgstr "Подключено"
+#: pyttcl\msg_dlg.py:36 pyttcl\msg_dlg.py:63 pyttcl\msg_dlg.py:90
+#: pyttcl\msg_dlg.py:115
+msgid "Close"
+msgstr "Закрыть"
 
-#: ../pyttcl/pyttcl.py:339
-msgid "loggedin"
-msgstr "Авторизовано"
+#~ msgid "Message"
+#~ msgstr "Сообщение"
 
 #~ msgid "user"
 #~ msgstr "Пользователь"

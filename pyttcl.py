@@ -21,8 +21,9 @@ class pyttcl:
 
         if config_file selected it will be used
         """
+        self.ConfigFile = config_file
         self.Config = configparser.ConfigParser()
-        self.Config.read(config_file, encoding='UTF-8')
+        self.Config.read(self.ConfigFile, encoding='UTF-8')
         self.Translation = gettext.translation(
             'pyttcl', os.path.join(os.getcwd(), 'locale'), languages=[self.Config.get(
                 'settings', 'language'

@@ -57,6 +57,14 @@ class MenuBar(wx.MenuBar):
             wx.EVT_MENU, lambda evt: InfoDialog(self.Pyttcl),
             Get_channel_infoItem
         )
+        channel_message = ChannelMenu.Append(
+            -1, _('Channel Message\t{hotkey}').format(
+                hotkey=self.Pyttcl.Config.get('hotkey', 'user_msg')
+            )
+        )
+        ChannelMenu.Bind(
+            wx.EVT_MENU, lambda evt: MessageDialog(self.Pyttcl, self.Pyttcl.MainTreeviewData[self.Pyttcl.GUI.Frame.Tree.GetSelection()]), channel_message
+        )
         self.Append(ChannelMenu, _('Channel'))
         UserMenu = wx.Menu()
         Get_user_infoItem = UserMenu.Append(

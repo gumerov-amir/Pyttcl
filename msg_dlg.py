@@ -17,7 +17,7 @@ class MessageDialog(wx.Frame):
         if type(arg) == TextMessage:
             if arg.nMsgType == 1:
                 if arg.nFromUserID not in pyttcl.MessageData['W']['U']:
-                    wx.Frame.__init__(self, None, -1, _('Message {user}'.format(user=pyttcl.TeamTalk.getUser(arg.nFromUserID).szNickname)))
+                    wx.Frame.__init__(self, None, -1, _('Message {user}').format(user=pyttcl.TeamTalk.getUser(arg.nFromUserID).szNickname))
                     self.Pyttcl = pyttcl
                     self.arg = arg
                     self.type = 'U'
@@ -44,7 +44,7 @@ class MessageDialog(wx.Frame):
                     self.UpdateFields()
             if arg.nMsgType == 2:
                 if arg.nChannelID not in pyttcl.MessageData['W']['C']:
-                    wx.Frame.__init__(self, None, -1, _('Message {channel}'.format(channel=pyttcl.TeamTalk.getChannel(arg.nChannelID).szName)))
+                    wx.Frame.__init__(self, None, -1, _('Message {channel}').format(channel=pyttcl.TeamTalk.getChannel(arg.nChannelID).szName))
                     self.Pyttcl = pyttcl
                     self.arg = arg
                     self.type = 'C'
@@ -72,7 +72,7 @@ class MessageDialog(wx.Frame):
         else:
             if type(arg) == User:
                 if arg.nUserID not in pyttcl.MessageData['W']['U']:
-                    wx.Frame.__init__(self, None, -1, _('Message {user}'.format(user=arg.szNickname)))
+                    wx.Frame.__init__(self, None, -1, _('Message {user}').format(user=arg.szNickname))
                     self.Pyttcl = pyttcl
                     self.arg = arg
                     self.type = 'U'
@@ -97,7 +97,7 @@ class MessageDialog(wx.Frame):
                     self.UpdateFields()
             if type(arg) == Channel:
                 if arg.nChannelID not in pyttcl.MessageData['W']['C']:
-                    wx.Frame.__init__(self, None, -1, _('Message {channel}'.format(channel=arg.szName)))
+                    wx.Frame.__init__(self, None, -1, _('Message {channel}').format(channel=arg.szName))
                     self.Pyttcl = pyttcl
                     self.arg = arg
                     self.type = 'C'
