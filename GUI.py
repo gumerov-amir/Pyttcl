@@ -1,5 +1,6 @@
 import webbrowser
 
+
 import wx
 
 from con_dlg import ConnectingDialog
@@ -7,6 +8,8 @@ from con_dlg import ConnectingDialog
 from inf_dlg import InfoDialog
 
 from msg_dlg import MessageDialog
+
+from TeamTalk5 import Channel
 
 
 class GUI(wx.App):
@@ -57,9 +60,17 @@ class MenuBar(wx.MenuBar):
             wx.EVT_MENU, lambda evt: InfoDialog(self.Pyttcl),
             Get_channel_infoItem
         )
+        ConnectChannelItem = ChannelMenu.Append(
+            -1, _('Connect\t{hotkey}').format(
+                hotkey=self.Pyttcl.Config['hotkey']['connect_to_channel']
+            )
+        )
+        ChannelMenu.Bind(
+            wx.EVT_MENU, lambda evt: self.ConnectToChannel(), ConnectChannelItem
+        )
         channel_message = ChannelMenu.Append(
             -1, _('Channel Message\t{hotkey}').format(
-                hotkey=self.Pyttcl.Config.get('hotkey', 'user_msg')
+                hotkey=self.Pyttcl.Config.get('hotkey', 'channel_msg')
             )
         )
         ChannelMenu.Bind(
@@ -85,6 +96,14 @@ class MenuBar(wx.MenuBar):
             wx.EVT_MENU, lambda evt: MessageDialog(self.Pyttcl, self.Pyttcl.MainTreeviewData[self.Pyttcl.GUI.Frame.Tree.GetSelection()]), user_message
         )
         self.Append(UserMenu, _('User'))
+        OptionMenu = wx.Menu()
+        change_nickname = OptionMenu.Append(-1, _('Change nickname\t{hotkey}').format(
+                hotkey=self.Pyttcl.Config.get('hotkey', 'change_nickname')
+            )
+        )
+        OptionMenu.Bind(wx.EVT_MENU, self.ChangeNickname, change_nickname)
+        
+        self.Append(OptionMenu, _('Options'))
         HelpMenu = wx.Menu()
         GetHelpItem = HelpMenu.Append(
             -1, _('Get help\t{hotkey}').format(
@@ -97,6 +116,16 @@ class MenuBar(wx.MenuBar):
             GetHelpItem
         )
         self.Append(HelpMenu, _('Help'))
+
+    def ChangeNickname(self, evt=None):
+        dialog = wx.TextEntryDialog(self.Pyttcl.GUI.Frame, _('enter you new nickname'), _('Changing nickname'))
+        if dialog.ShowModal() == wx.ID_OK:
+            self.Pyttcl.TeamTalk.doChangeNickname(dialog.GetValue())
+
+
+    def ConnectToChannel(self):
+        if type(self.Pyttcl.MainTreeviewData[self.Pyttcl.GUI.Frame.Tree.GetSelection()]) == Channel:
+            self.Pyttcl.TeamTalk.doJoinChannelByID(self.Pyttcl.MainTreeviewData[self.Pyttcl.GUI.Frame.Tree.GetSelection()].nChannelID, '')
 
     def Disconnect(self, evt):
         self.Pyttcl.GUI.Frame.GetMenuBar().GetMenu(0).GetMenuItems()[0].Enable(
