@@ -8,7 +8,7 @@ import os
 import sys
 
 
-from GUI import GUI
+from gui import GUI
 
 import TeamTalk5
 
@@ -32,12 +32,15 @@ class pyttcl:
         self.Translation.install()
         TeamTalk5.setLicense('BearWare.dk', '4f30b90b')
         self.TeamTalk = TeamTalk5.TeamTalk()
-        self.GUI = GUI(self)
+        self.TeamTalk.initSoundInputDevice(1)
+        self.TeamTalk.initSoundOutputDevice(5)
+        self.gui = GUI(self)
         self.MainTreeviewData = {}
         self.MessageData = {'C': {}, 'U': {}, 'W': {'C': {}, 'U': {}}}
         self.is_connected = None
         self.is_loggedin = None
-        self.GUI.MainLoop()
+        self.is_enable_voice_activation = False
+        self.gui.MainLoop()
 
 
 if __name__ == '__main__':
