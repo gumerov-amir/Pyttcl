@@ -6,7 +6,7 @@ from .msg_dlg import MessageDialog
 
 from  lib.TeamTalk5 import Channel, User
 
-from lib import Tolk
+# from lib import Tolk
 
 
 class EventThread(Thread):
@@ -46,7 +46,7 @@ class EventThread(Thread):
 
     def notify(self, txt):
         if self.allow_notify:
-            Tolk.speak(txt)
+            # Tolk.speak(txt)
 
     def addChannelToTreeview(self, channel):
         if channel.nChannelID == 1:
