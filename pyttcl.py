@@ -10,7 +10,7 @@ import sys
 
 from gui import GUI
 
-import TeamTalk5
+from lib import TeamTalk5
 
 
 class pyttcl:
@@ -19,13 +19,13 @@ class pyttcl:
     def __init__(self, config_file='pyttcl.ini'):
         """Initialize App.
 
-        if config_file selected it will be used
+        if config_file typed it will be used
         """
         self.ConfigFile = config_file
         self.Config = configparser.ConfigParser()
         self.Config.read(self.ConfigFile, encoding='UTF-8')
         self.Translation = gettext.translation(
-            'pyttcl', os.path.join(os.getcwd(), 'locale'), languages=[self.Config.get(
+            'pyttcl', 'locale', languages=[self.Config.get(
                 'settings', 'language'
             )]
         )
